@@ -1,0 +1,7 @@
+TO DO
+real overloaded constructors for each class 
+interface
+modification to abilities
+Sight
+Hearing
+Movement

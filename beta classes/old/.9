@@ -1,0 +1,217 @@
+import java.util.*;
+public class Character extends GameObject
+{
+	Random generator = new Random();
+	protected String description;
+	protected ArrayList<Dialogue> responses;
+	protected HashMap<String, GameObject> character;
+	protected HashMap<String, BodyPart> bodyParts;
+	protected HashMap<String, Weapon> weapons;
+	protected HashMap<String, Armor> armors;
+	protected HashMap<String, Attribute> attributes;
+	protected HashMap<String, Skill> skills;
+	protected HashMap<String, Effect> effects;
+	protected HashMap<String, Stat> stats;
+	protected HashMap<String, Ability> abilities;
+	protected HashMap<String, Quest> quests;
+	protected HashMap<String, Item> inventory;
+	// reputations
+	
+	public Character()
+	{
+		name = "Greg";
+		description = "Just a regular guy living in a binary world";
+		bodyParts = buildBody();
+		attributes = buildAttributes();
+		weapons = buildWeapons();
+		armors = buildArmors();
+		skills = buildSkills();
+		stats = buildStats();
+		effects = new HashMap<String, Effect>;
+		abilities = new HashMap<String, Ability>;
+		quests = new HashMap<String, Quest>;
+		responses = new ArrayList<Dialogue>;
+		inventory = buildInventory();
+		character = buildCharacter();
+		inventoryCapacity = 10;
+		level = 1;
+		coins = 100;
+	}
+	public HashMap<String, GameObject> buildCharacter()
+	{
+		HashMap<String, GameObject> character = new HashMap<String, GameObject>;
+		
+		character.put("InventorySlots", new Stat("Inventory Slots",10));
+		character.put("Level", new Stat("Level",1));
+		character.put("Coins",new Item("Coins","Your Money"));
+		character.put("Head",new BodyPart("Head"));
+		character.put("Chest",new BodyPart("Chest"));
+		character.put("Legs",new BodyPart("Legs"));
+		character.put("Feet",new BodyPart("Feet"));
+		character.put("Arms",new BodyPart("Arms"));
+		character.put("Waist",new BodyPart("Waist"));
+		character.put("Left Finger",new BodyPart("Left Finger"));
+		character.put("Right Finger",new BodyPart("Right Finger"));
+		character.put("Hands",new BodyPart("Hands"));
+		character.put("Back",new BodyPart("Back"));
+		character.put("Shoulders",new BodyPart("Shoulders"));
+		character.put("Neck",new BodyPart("Neck"));
+		character.put("Accessory",new BodyPart("Accessory"));
+		character.put("Left Hand",new BodyPart("Left Hand"));
+		character.put("Right Hand",new BodyPart("Right Hand"));
+		character.put("Health",new Attribute("Health","Your hit points",1,10));
+		character.put("Mana",new Attribute("Mana","Magic casting resource",1,10));
+		character.put("Energy",new Attribute("Energy","Physical ability resource",1,10));
+		character.put("Power",new Attribute("Power","Damage with attacks",1,1));
+		character.put("Accuracy",new Attribute("Accuracy","Chance to hit",1,1));
+		character.put("Toughness",new Attribute("Toughness","Health regeneration / Physical damage reduction",1,1));
+		character.put("Dexterity",new Attribute("Dexterity","Energy regeneration / Dodge chance",1,1));
+		character.put("Speed",new Attribute("Speed","Global cooldowns",1,1));
+		character.put("Stealth",new Attribute("Stealth","Ability to remain hidden",1,1));
+		character.put("Concentration",new Attribute("Concentration","Mana regeneration / magical resistance",1,1));
+		character.put("Crit",new Attribute("Crit","Chance to hit criticals",1,1));
+		character.put("Mining",new Skill("Mining","Allows you to mine raw minerals from the world for smithing",1,1);
+		character.put("Herbalism",new Skill("Herbalism","Allows you to locate and identify herbs for alchemy",1,1);
+		character.put("Fishing",new Skill("Fishing","Allows you to catch fish for cooking",1,1);
+		character.put("Skinning",new Skill("Skinning","Allows you to scavenge hides off of fallen animals",1,1);
+		character.put("Woodcutting",new Skill("Woodcutting","Allows you to gather wood for fletching",1,1);
+		character.put("Thieving",new Skill("Thieving","Your ability to successfully pick pockets and locks",1,1);
+		character.put("Smithing",new Skill("Smithing","Allows you to craft armor and weapons",1,1);
+		character.put("Alchemy",new Skill("Alchemy","Allows you to mix herbs to create powerful potions",1,1);
+		character.put("Cooking",new Skill("Cooking","Allows you to cook and prepare food for various benefits",1,1);
+		character.put("Leatherworking",new Skill("Leatherworking","Allows you to craft armor and accessories",1,1);
+		character.put("Medicine",new Skill("Medicine","Allows you to craft healing potions and foods",1,1);
+		character.put("Fletching",new Skill("Fletching","Allows you to craft items out of wood",1,1);
+		character.put("Jewelcrafting",new Skill("Jewelcrafting","Allows you to create rings and necklaces",1,1);
+		character.put("Enchanting",new Skill("Enchanting","Allows you to enchant armor and weapons",1,1);
+	public Item getItem(Item theItem)
+	{
+		return inventory.get(indexOf(theItem));
+	}
+	public void addItem(Item theItem)
+	{
+		if(inventory.size() < inventoryCapacity)
+			inventory.add(theItem);
+	}
+	public void removeItem(Item theItem)
+	{
+		inventory.remove(theItem);
+	}
+	public Quest getQuest(Quest theQuest)
+	{
+		return quests.get(indexOf(theQuest));
+	}
+	public void addQuest(Quest theQuest)
+	{
+		quests.add(theQuest);
+	}
+	public void removeQuest(Quest theQuest)
+	
+		quests.remove(theQuest);
+	}
+	public void addEffect(Effect theEffect)
+	{
+		effects.add(theEffect);
+	}
+	public void removeEffect(Effect theEffect)
+	{
+		effects.remove(theEffect);
+	}
+	public void getEffect(Effect theEffect)
+	{
+		return effects.get(indexOf(theEffect));
+	}
+	public void addAbility(Ability theAbility)
+	{
+		abilities.add(theAbility);
+	}
+	public void removeAbility(Ability theAbility)
+	{
+		abilities.remove(theAbility);
+	}
+	public void getAbility(Ability theAbility)
+	{
+		abilities.get(indexOf(theAbility));
+	}
+	public Skill getSkill(String skillName)
+	{
+		for(int i = 0; i<skills.length; i++)
+			if(skills[i].getName() == skillName)
+				return skills[i];
+		return null;
+	}
+	public Attribute getAttribute(String attributeName)
+	{
+		for(int i = 0; i < attributes.length; i++)
+			if(attributes[i].getName() == attributeName)
+				return attributes[i];
+		return null;
+	}
+	public BodyPart getBodyPart(String bodyPartName)	
+	{
+		for(int i = 0; i < bodyParts.length; i++)
+			if(bodyParts[i].getName() == bodyPartName)
+				return bodyParts[i];
+		return null;
+	}
+	public Weapon getWeapon(String weaponName)
+	{
+		for(
+	}
+	
+	/**
+	 * Gets the description of this character
+	 * @return description the description for this character
+	 */
+	public String getDescription()
+	{
+		return description;
+	}
+	/**
+	 * Sets the description of this character
+	 * @param description the description for this character
+	 */
+	public void setDescription(String newDescription)
+	{
+		description = newDescription;
+	}  
+	/**
+	 * Gets the dialogue for this character
+	 * @return the first available unheard dialogue, or the default response
+	 */
+	public String getResponse()
+	{
+		return responses.getResponse();	
+	}	
+	/**
+	* Allows you to set the speed the player has
+	* @param newSpeed the new speed for the player
+	*/
+	public int getLevel()
+	{
+		return level;
+	}
+	/**
+	* Allows you to set the level of the player
+	* @param newLevel the level of the player
+	*/
+	public void setLevel(int newLevel)
+	{
+		level = newLevel;
+	}
+	public void addCoins(int coinsToAdd)
+	{
+		coins += coinsToAdd;
+	}
+	public void removeCoins(int coinsToRemove)
+	{
+		coins -= coinsToRemove;
+	}
+	public int getCoins()
+	{
+		return coins;
+	}
+	
+	
+	
+}

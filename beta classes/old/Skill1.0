@@ -1,0 +1,55 @@
+import java.util.*;
+public class Skill extends Stat
+{
+	String description;
+	int level, currentExperience, experienceNeeded;
+	public Skill()
+	{
+		name = "swords";
+		description = "Learn how to master the art of swordmanship";
+		currentExperience = 0;
+		experienceNeeded = 10;
+		level = 1;
+	}
+	public Skill(String newName, String newDescription, int newLevel)
+	{
+		name = newName;
+		description = newDescription;
+		level = newLevel;
+		currentExperience = 0;
+		experienceNeeded = 10;
+	}
+	public int getLevel()
+	{
+		return level;
+	}
+	public void setLevel(int newLevel)
+	{
+		level = newLevel;
+	}
+	public int getCurrentExperience()
+	{
+		return currentExperience;
+	}
+	public void setCurrentExperience(int newCurrentExperience)
+	{
+		currentExperience = newCurrentExperience;
+	}
+	public int getExperienceNeeded()
+	{
+		return experienceNeeded;
+	}
+	public void addExperience(int experience)
+	{
+		currentExperience += experience;
+		if(currentExperience > experienceNeeded)
+		{
+			level++;
+			currentExperience = 0;
+		}
+	}
+	public void setExperienceNeeded(int newExperienceNeeded)
+	{
+		experienceNeeded = newExperienceNeeded;
+	}
+}
