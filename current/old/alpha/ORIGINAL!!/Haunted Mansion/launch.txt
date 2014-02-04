@@ -1,0 +1,3 @@
+set path="c:\program files\java\jdk1.7.0_07\bin";%path%
+
+cmd
