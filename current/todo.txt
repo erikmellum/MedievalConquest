@@ -6,6 +6,7 @@ Sight
 Hearing
 Movement
 Vehicles
+Trading System
 Companions
 Leveling
 Battle Engine
